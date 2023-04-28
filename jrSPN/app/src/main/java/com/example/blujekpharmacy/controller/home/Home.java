@@ -54,6 +54,10 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
             case R.id.navigation_trans:
                 fragment = new TransactionFragment();
                 break;
+
+            case  R.id.navigation_news:
+                fragment = new NewsFragment();
+                break;
         }
         return loadFragment(fragment);
     }

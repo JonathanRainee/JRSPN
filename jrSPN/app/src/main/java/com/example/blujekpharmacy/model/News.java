@@ -47,4 +47,10 @@ public class News {
         }
         return null;
     }
+
+    public static void initNews(){
+        Login.newsList.add(new News(1, "Warriors lead 1-0 against nets last night 102-55", "Warriors leads"));
+        Login.newsList.add(new News(2, "Cavaliers traded kevin love to the grizlies", "Cavaliers trade"));
+        Login.newsList.add(new News(3, "Kobe bryant retired after last night game against pistons", "Kobe Bryant Retirement"));
+    }
 }

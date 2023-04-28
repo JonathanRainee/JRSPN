@@ -78,4 +78,10 @@ public class Game {
         }
         return null;
     }
+
+    public static void initGame(){
+        Login.gameList.add(new Game("Golden State Warriors", "Oklahoma City Thunder", "20-12-2023", 50, "VIP", 1));
+        Login.gameList.add(new Game("Cleveland Cavaliers", "Memphis Grizlies", "20-11-2023", 30, "Regular", 2));
+        Login.gameList.add(new Game("Brooklyn Nets", "Detroit Piston", "10-12-2023", 50, "IP", 3));
+    }
 }

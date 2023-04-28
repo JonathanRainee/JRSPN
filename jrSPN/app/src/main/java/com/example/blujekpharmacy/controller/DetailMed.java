@@ -39,9 +39,7 @@ public class DetailMed extends AppCompatActivity {
         detailDesc = findViewById(R.id.detailDesc);
 
         med = (Medicine) getIntent().getSerializableExtra("medicine");
-//        holder.medImg.setImageResource(Integer.parseInt(meds.get(position).getImage()));
         detailImg.setImageResource(Integer.parseInt(med.getImage()));
-//        Picasso.get().load(med.getImage()).into(detailImg);
 
         detailManu.setText(med.getManufacturer());
         detailName.setText(med.getName());
