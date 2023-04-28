@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.blujekpharmacy.R;
+import com.example.blujekpharmacy.adapter.GameAdapter;
 import com.example.blujekpharmacy.adapter.MedAdapter;
 import com.example.blujekpharmacy.controller.About;
 import com.example.blujekpharmacy.controller.DetailMed;
@@ -41,7 +42,9 @@ public class HomeFragment extends Fragment implements MedAdapter.MedClickListene
     private String mParam2;
 
     RecyclerView rvMed;
+    RecyclerView rvGame;
     MedAdapter medAdapter;
+    GameAdapter gameAdapter;
     ImageView imgtoAbout;
 
 
@@ -87,8 +90,8 @@ public class HomeFragment extends Fragment implements MedAdapter.MedClickListene
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 //        super.onViewCreated(view, savedInstanceState);
         buildRecylclerView();
-        imgtoAbout = getView().findViewById(R.id.imgtoAbout);
-        imgtoAbout.setOnClickListener(view1 -> startActivity(new Intent(getContext(), About.class)));
+//        imgtoAbout = getView().findViewById(R.id.imgtoAbout);
+//        imgtoAbout.setOnClickListener(view1 -> startActivity(new Intent(getContext(), About.class)));
     }
 
     @Override
@@ -100,7 +103,8 @@ public class HomeFragment extends Fragment implements MedAdapter.MedClickListene
     @Override
     public void onMedClicked(int pos) {
         Intent intent = new Intent(this.getContext(), DetailMed.class);
-        intent.putExtra("medicine", (Serializable) Login.dbMed.get(pos));
+//        intent.putExtra("medicine", (Serializable) Login.dbMed.get(pos));
+        intent.putExtra("game", (Serializable) Login.gameList.get(pos));
         startActivity(intent);
     }
 
@@ -111,9 +115,13 @@ public class HomeFragment extends Fragment implements MedAdapter.MedClickListene
     }
 
     private void buildRecylclerView(){
-        rvMed = getView().findViewById(R.id.rvMed);
-        rvMed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        medAdapter = new MedAdapter(Login.dbMed, this);
-        rvMed.setAdapter(medAdapter);
+//        rvMed = getView().findViewById(R.id.rvMed);
+        rvGame = getView().findViewById(R.id.rvMed);
+//        rvMed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        rvGame.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+//        medAdapter = new MedAdapter(Login.dbMed, this);
+        gameAdapter = new GameAdapter(Login.gameList, this::onMedClicked);
+//        rvMed.setAdapter(medAdapter);
+        rvGame.setAdapter(gameAdapter);
     }
 }

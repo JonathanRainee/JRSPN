@@ -25,12 +25,9 @@ public class Login extends AppCompatActivity {
     private Button btnRegister, btnLogin;
     private EditText etemail, etpass;
     private String email, pass;
-
     private boolean executed = false;
-
     public static ArrayList<User> userList = new ArrayList<>();
     public static ArrayList<Transaction> transactionList = new ArrayList<>();
-
     public static ArrayList<News> newsList = new ArrayList<>();
     public static ArrayList<Medicine> dbMed = new ArrayList<>();
     public  static  ArrayList<Game>  gameList = new ArrayList<>();
@@ -41,7 +38,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         btnLogin = findViewById(R.id.toLoginBtn);
         if(executed == false){
-            Medicine.initMedicine();
+            Game.initGame();
+            News.initNews();
             executed = true;
         }
         btnLogin.setOnClickListener(new View.OnClickListener() {

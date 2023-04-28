@@ -2,6 +2,7 @@ package com.example.blujekpharmacy.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blujekpharmacy.R;
+import com.example.blujekpharmacy.model.Game;
 import com.example.blujekpharmacy.model.Medicine;
 import com.example.blujekpharmacy.model.Transaction;
 import com.example.blujekpharmacy.model.User;
@@ -19,32 +21,34 @@ import com.squareup.picasso.Picasso;
 public class DetailMed extends AppCompatActivity {
 
     Medicine med;
+    Game game;
     ImageView detailImg;
-    TextView detailManu, detailName, detailPrice, detailDesc;
+    TextView tvDate, tvHome, tvAway, tvPricenSeat;
 
     EditText buyQty;
     Button goBuy;
     int qty = 0;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_med);
         goBuy = findViewById(R.id.goBuy);
 
-        detailImg = findViewById(R.id.detailImg);
-        detailManu = findViewById(R.id.detailManu);
-        detailName = findViewById(R.id.detailName);
-        detailPrice = findViewById(R.id.detailPrice);
-        detailDesc = findViewById(R.id.detailDesc);
+        tvDate = findViewById(R.id.tvDate);
+        tvHome = findViewById(R.id.tvHome);
+        tvAway = findViewById(R.id.tvAway);
+        tvPricenSeat = findViewById(R.id.tvPricenSeat);
 
-        med = (Medicine) getIntent().getSerializableExtra("medicine");
-        detailImg.setImageResource(Integer.parseInt(med.getImage()));
+//        med = (Medicine) getIntent().getSerializableExtra("medicine");
+        game = (Game) getIntent().getSerializableExtra("game");
+//        detailImg.setImageResource(Integer.parseInt(med.getImage()));
 
-        detailManu.setText(med.getManufacturer());
-        detailName.setText(med.getName());
-        detailPrice.setText("Rp" + med.getPrice());
-        detailDesc.setText(med.getDesc());
+        tvDate.setText(game.getDate());
+        tvHome.setText(game.getHomeTeam());
+        tvAway.setText(game.getAwayTeam());
+        tvPricenSeat.setText(game.getPrice()+"$ || "+game.getSeatType());
 
         goBuy.setOnClickListener(view -> {
             buyQty = findViewById(R.id.buyQty);

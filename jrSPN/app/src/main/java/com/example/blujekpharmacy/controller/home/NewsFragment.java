@@ -2,13 +2,19 @@ package com.example.blujekpharmacy.controller.home;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.blujekpharmacy.R;
+import com.example.blujekpharmacy.adapter.NewsAdapter;
+import com.example.blujekpharmacy.controller.Login;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +27,9 @@ public class NewsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    RecyclerView rvNews;
+    NewsAdapter newsAdapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -58,9 +67,28 @@ public class NewsFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        buildRV();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        buildRV();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_news, container, false);
+    }
+
+    public void buildRV(){
+        rvNews = getView().findViewById(R.id.rvNews);
+        rvNews.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        newsAdapter = new NewsAdapter(Login.newsList);
+        rvNews.setAdapter(newsAdapter);
     }
 }

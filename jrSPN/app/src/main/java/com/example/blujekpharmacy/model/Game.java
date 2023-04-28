@@ -2,7 +2,9 @@ package com.example.blujekpharmacy.model;
 
 import com.example.blujekpharmacy.controller.Login;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
 
 
     private String homeTeam;

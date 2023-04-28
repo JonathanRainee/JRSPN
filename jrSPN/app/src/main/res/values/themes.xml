@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.BlujekPharmacy" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    <style name="Theme.JrSpn" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <item name="colorPrimary">@color/blue2</item>
         <item name="colorPrimaryVariant">@color/blue1</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -11,13 +11,13 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme.BlujekPharmacy.NoActionBar">
+    <style name="Theme.JrSpn.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.BlujekPharmacy.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.JrSpn.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.BlujekPharmacy.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.JrSpn.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

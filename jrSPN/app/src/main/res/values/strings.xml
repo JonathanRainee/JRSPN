@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">blujekPharmacy</string>
+    <string name="app_name">JrSpn</string>
     <string name="title_activity_about">About</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
