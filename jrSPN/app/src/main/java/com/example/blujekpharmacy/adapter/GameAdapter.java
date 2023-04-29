@@ -28,7 +28,6 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameVH> {
     @NonNull
     @Override
     public GameVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        return null;
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.game_item, parent, false);
         return new GameVH(v, listener);
     }
@@ -38,7 +37,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameVH> {
         holder.tvDate.setText(games.get(position).getDate());
         holder.tvHome.setText(games.get(position).getHomeTeam());
         holder.tvAway.setText(games.get(position).getAwayTeam());
-        holder.tvPricenSeat.setText(games.get(position).getPrice() +"$ || "+games.get(position).getSeatType());
+        holder.tvPrice.setText(String.valueOf(games.get(position).getPrice()));
+        holder.tvSeat.setText(games.get(position).getSeatType());
     }
 
     @Override
@@ -47,7 +47,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameVH> {
     }
 
     class GameVH extends RecyclerView.ViewHolder{
-        TextView tvDate, tvHome, tvVs, tvAway, tvPricenSeat;
+        TextView tvDate, tvHome, tvVs, tvAway, tvPrice, tvSeat;
         CardView cvGame;
 
 
@@ -57,7 +57,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameVH> {
             tvHome = itemView.findViewById(R.id.tvHome);
             tvVs = itemView.findViewById(R.id.tvVs);
             tvAway = itemView.findViewById(R.id.tvAway);
-            tvPricenSeat = itemView.findViewById(R.id.tvPricenSeat);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            tvSeat = itemView.findViewById(R.id.tvSeat);
             cvGame = itemView.findViewById(R.id.cvGame);
             cvGame.setOnClickListener(x -> {
                 listener.onGameClicked(getAdapterPosition());

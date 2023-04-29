@@ -100,9 +100,6 @@ public class TransactionFragment extends Fragment {
     }
 
     public static void getTransDB(){
-//        if(Login.transactionList != null){
-//            Login.transactionList.clear();
-//        }
         Log.d("userID", User.curr.getID()+" "+User.curr.getName());
         Login.transactionList = Transaction.getTrans(User.curr.getID());
         if(Login.transactionList.size() <= 0){

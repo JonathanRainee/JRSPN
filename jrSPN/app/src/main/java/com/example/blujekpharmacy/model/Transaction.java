@@ -1,6 +1,7 @@
 package com.example.blujekpharmacy.model;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import com.example.blujekpharmacy.controller.Login;
 
@@ -11,27 +12,15 @@ import java.util.Date;
 public class Transaction {
 
     private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
     private int ID;
     private int userid;
-    private int medicineid;
     private int quantity;
     private String date;
-
     private int gameID;
 
-
-    public Transaction(int ID, String date, int userid, int medicineid, int quantity ) {
-        this.setID(ID);
+    public Transaction(int userid, int gameID, int quantity) {
         this.setUserid(userid);
-        this.setMedicineid(medicineid);
-        this.setQuantity(quantity);
-        this.setDate(date);
-    }
-
-    public Transaction(int userid, int medicineid, int quantity) {
-        this.setUserid(userid);
-        this.setMedicineid(medicineid);
+        this.setGameID(gameID);
         this.setQuantity(quantity);
         this.setDate(df.format(new Date()));
     }
@@ -52,21 +41,6 @@ public class Transaction {
         return trans;
     }
 
-    public static void updateTransaction(int id, int q){
-        ContentValues val = new ContentValues();
-        for (Transaction t : Login.transactionList) {
-            if(t.ID == id){
-                t.quantity = q;
-            }
-        }
-        return;
-    }
-
-    public static void deleteTransaction(int id){
-        Login.transactionList.remove(id);
-        return;
-    }
-
     public int getID() {
         return ID;
     }
@@ -83,13 +57,9 @@ public class Transaction {
         this.userid = userid;
     }
 
-    public int getMedicineid() {
-        return medicineid;
-    }
+    public int getGameID() {return gameID;}
 
-    public void setMedicineid(int medicineid) {
-        this.medicineid = medicineid;
-    }
+    public void setGameID(int gameID) {this.gameID = gameID;}
 
     public int getQuantity() {
         return quantity;

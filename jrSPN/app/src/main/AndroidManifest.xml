@@ -31,10 +31,7 @@
             android:name=".controller.home.Home"
             android:exported="false" />
         <activity
-            android:name=".controller.DetailMed"
-            android:exported="false" />
-        <activity
-            android:name=".controller.About"
+            android:name=".controller.DetailGame"
             android:exported="false" />
         <activity
             android:name=".controller.Register"

@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.blujekpharmacy.R;
 import com.example.blujekpharmacy.controller.home.Home;
 import com.example.blujekpharmacy.model.Game;
-import com.example.blujekpharmacy.model.Medicine;
 import com.example.blujekpharmacy.model.News;
 import com.example.blujekpharmacy.model.Transaction;
 import com.example.blujekpharmacy.model.User;
@@ -29,7 +28,6 @@ public class Login extends AppCompatActivity {
     public static ArrayList<User> userList = new ArrayList<>();
     public static ArrayList<Transaction> transactionList = new ArrayList<>();
     public static ArrayList<News> newsList = new ArrayList<>();
-    public static ArrayList<Medicine> dbMed = new ArrayList<>();
     public  static  ArrayList<Game>  gameList = new ArrayList<>();
 
     @Override
@@ -48,7 +46,6 @@ public class Login extends AppCompatActivity {
                 set();
                 Toast tst = err();
                 if (tst!=null){
-                    Log.d("tst", "testing123");
                     tst.show();
                 }else{
                     startActivity(new Intent(Login.this, Home.class));

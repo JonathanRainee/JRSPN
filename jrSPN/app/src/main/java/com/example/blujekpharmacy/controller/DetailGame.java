@@ -13,14 +13,11 @@ import android.widget.Toast;
 
 import com.example.blujekpharmacy.R;
 import com.example.blujekpharmacy.model.Game;
-import com.example.blujekpharmacy.model.Medicine;
 import com.example.blujekpharmacy.model.Transaction;
 import com.example.blujekpharmacy.model.User;
-import com.squareup.picasso.Picasso;
 
-public class DetailMed extends AppCompatActivity {
+public class DetailGame extends AppCompatActivity {
 
-    Medicine med;
     Game game;
     ImageView detailImg;
     TextView tvDate, tvHome, tvAway, tvPricenSeat;
@@ -33,7 +30,7 @@ public class DetailMed extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_med);
+        setContentView(R.layout.activity_detail_game);
         goBuy = findViewById(R.id.goBuy);
 
         tvDate = findViewById(R.id.tvDate);
@@ -41,9 +38,7 @@ public class DetailMed extends AppCompatActivity {
         tvAway = findViewById(R.id.tvAway);
         tvPricenSeat = findViewById(R.id.tvPricenSeat);
 
-//        med = (Medicine) getIntent().getSerializableExtra("medicine");
         game = (Game) getIntent().getSerializableExtra("game");
-//        detailImg.setImageResource(Integer.parseInt(med.getImage()));
 
         tvDate.setText(game.getDate());
         tvHome.setText(game.getHomeTeam());
@@ -55,14 +50,12 @@ public class DetailMed extends AppCompatActivity {
             try{
                 qty = Integer.parseInt(buyQty.getText().toString());
             } catch (Exception e){
-                qty = 0;
+                qty = 1;
             }
             Toast tst = err();
             if (tst!=null) tst.show();
             else {
-                Log.d("quantity", Integer.toString(qty));
-                Transaction.insertTransaction(new Transaction(User.curr.getID(), med.getID(), qty));
-//                Transaction.INSERT_TRANSACTION(new Transaction(User.curr.getID(), med.getID(), qty));
+                Transaction.insertTransaction(new Transaction(User.curr.getID(), game.getId(), qty));
                 tst = succ();
                 tst.show();
                 buyQty.setText("0");

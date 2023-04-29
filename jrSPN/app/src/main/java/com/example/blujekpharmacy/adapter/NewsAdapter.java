@@ -10,7 +10,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blujekpharmacy.R;
-import com.example.blujekpharmacy.model.Medicine;
 import com.example.blujekpharmacy.model.News;
 
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVH>{
     @NonNull
     @Override
     public NewsVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        return null;
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false);
         return new NewsVH(v, listener);
     }

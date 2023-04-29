@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:background="@color/white_darker"
     android:layout_width="match_parent"
-    tools:context=".controller.DetailMed"
+    tools:context=".controller.DetailGame"
     android:layout_height="match_parent"
     android:orientation="vertical">
 

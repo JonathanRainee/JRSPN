@@ -13,11 +13,18 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/logo"
-            android:layout_marginTop="60dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="JrSpn"
+            android:textColor="@color/blue1"
+            android:layout_marginTop="100dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            />
+
     </LinearLayout>
 
     <LinearLayout
@@ -34,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:text="Account Registration"
+            android:text="Register"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="?attr/colorPrimaryVariant"

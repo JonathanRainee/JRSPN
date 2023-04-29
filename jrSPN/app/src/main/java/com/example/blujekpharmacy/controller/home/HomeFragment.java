@@ -17,11 +17,8 @@ import android.widget.ImageView;
 
 import com.example.blujekpharmacy.R;
 import com.example.blujekpharmacy.adapter.GameAdapter;
-import com.example.blujekpharmacy.adapter.MedAdapter;
-import com.example.blujekpharmacy.controller.About;
-import com.example.blujekpharmacy.controller.DetailMed;
+import com.example.blujekpharmacy.controller.DetailGame;
 import com.example.blujekpharmacy.controller.Login;
-import com.example.blujekpharmacy.model.Medicine;
 
 import java.io.Serializable;
 
@@ -30,7 +27,7 @@ import java.io.Serializable;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements MedAdapter.MedClickListener {
+public class HomeFragment extends Fragment implements GameAdapter.GameClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,7 +40,6 @@ public class HomeFragment extends Fragment implements MedAdapter.MedClickListene
 
     RecyclerView rvMed;
     RecyclerView rvGame;
-    MedAdapter medAdapter;
     GameAdapter gameAdapter;
     ImageView imgtoAbout;
 
@@ -80,32 +76,20 @@ public class HomeFragment extends Fragment implements MedAdapter.MedClickListene
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
         buildRecylclerView();
-//        imgtoAbout = getView().findViewById(R.id.imgtoAbout);
-//        imgtoAbout.setOnClickListener(view1 -> startActivity(new Intent(getContext(), About.class)));
     }
 
     @Override
     public void onResume() {
         super.onResume();
         buildRecylclerView();
-    }
-
-    @Override
-    public void onMedClicked(int pos) {
-        Intent intent = new Intent(this.getContext(), DetailMed.class);
-//        intent.putExtra("medicine", (Serializable) Login.dbMed.get(pos));
-        intent.putExtra("game", (Serializable) Login.gameList.get(pos));
-        startActivity(intent);
     }
 
     @NonNull
@@ -115,13 +99,16 @@ public class HomeFragment extends Fragment implements MedAdapter.MedClickListene
     }
 
     private void buildRecylclerView(){
-//        rvMed = getView().findViewById(R.id.rvMed);
         rvGame = getView().findViewById(R.id.rvMed);
-//        rvMed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rvGame.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//        medAdapter = new MedAdapter(Login.dbMed, this);
-        gameAdapter = new GameAdapter(Login.gameList, this::onMedClicked);
-//        rvMed.setAdapter(medAdapter);
+        gameAdapter = new GameAdapter(Login.gameList, this::onGameClicked);
         rvGame.setAdapter(gameAdapter);
+    }
+
+    @Override
+    public void onGameClicked(int pos) {
+        Intent intent = new Intent(this.getContext(), DetailGame.class);
+        intent.putExtra("game", (Serializable) Login.gameList.get(pos));
+        startActivity(intent);
     }
 }
