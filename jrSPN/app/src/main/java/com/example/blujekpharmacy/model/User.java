@@ -1,6 +1,5 @@
 package com.example.blujekpharmacy.model;
 
-import com.example.blujekpharmacy.MainActivity;
 import com.example.blujekpharmacy.controller.Login;
 
 public class User {
